@@ -421,7 +421,7 @@
         <div class="contact-info-card">
           <div class="info-item">
             <div class="info-label">Dirección</div>
-            <p style="font-weight: 500;">Calle Sergio Buitrón Casas, Col. Cuauhtémoc, Tlahuelilpan, Hidalgo</p>
+            <p style="font-weight:500">Calle Sergio Buitrón Casas, Col. Cuauhtémoc, Tlahuelilpan, Hidalgo</p>
           </div>
           <div class="info-item">
             <div class="info-label">Atención Directa</div>
@@ -437,13 +437,18 @@
         </div>
 
         <div style="background:#000; padding:2.5rem; border-radius:12px; border:1px solid var(--border-color)">
-          <div class="info-label" style="margin-bottom:1rem">¿Tienes alguna duda? Escribenos</div>
-          <input type="text" placeholder="Nombre o Empresa"
+          <div class="info-label" style="margin-bottom:1rem">¿Tienes alguna duda?</div>
+
+          <input id="contact-nombre" type="text" placeholder="Nombre o Empresa"
             style="width:100%; background:#111; border:1px solid #333; padding:12px; color:white; margin-bottom:10px; border-radius:4px">
-          <textarea placeholder="Estamos para apoyarte, cuentanos."
-            style="width:100%; background:#111; border:1px solid #333; padding:12px; color:white; height:80px; margin-bottom:10px; border-radius:4px"></textarea>
-          <button class="nav-wish" style="width:100%; justify-content:center"
-            onclick="showToast('Mensaje enviado. Nos contactaremos pronto.')">Enviar Consulta</button>
+
+          <textarea id="contact-mensaje" placeholder="Estamos para apoyarte, cuéntanos."
+            style="width:100%; background:#111; border:1px solid #333; padding:12px; color:white; height:80px; margin-bottom:10px; border-radius:4px; resize:vertical"></textarea>
+
+          <button id="btn-enviar" class="nav-wish" style="width:100%; justify-content:center" onclick="enviarMensaje()">
+            Enviar Consulta
+          </button>
+          <p id="contact-status" style="margin-top:8px; font-size:13px; text-align:center; min-height:18px"></p>
         </div>
       </div>
 
@@ -570,7 +575,57 @@
     }
 
     renderProducts();
+    
   </script>
+
+  <!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // ─── REEMPLAZA ESTOS 3 VALORES CON LOS TUYOS DE EMAILJS ───
+  const EMAILJS_PUBLIC_KEY  = '4zPup5_OhaKMJLCFw';
+  const EMAILJS_SERVICE_ID  = 'service_qi46mff';
+  const EMAILJS_TEMPLATE_ID = 'template_0zofegf';
+  // ──────────────────────────────────────────────────────────
+
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+
+  function enviarMensaje() {
+    const nombre  = document.getElementById('contact-nombre').value.trim();
+    const mensaje = document.getElementById('contact-mensaje').value.trim();
+    const status  = document.getElementById('contact-status');
+    const btn     = document.getElementById('btn-enviar');
+
+    if (!nombre || !mensaje) {
+      status.style.color = '#ff6b00';
+      status.textContent = 'Por favor completa todos los campos.';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    status.textContent = '';
+
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      nombre:  nombre,
+      mensaje: mensaje
+    })
+    .then(() => {
+      status.style.color = '#4caf50';
+      status.textContent = '✓ Mensaje enviado. ¡Nos pondremos en contacto pronto!';
+      document.getElementById('contact-nombre').value  = '';
+      document.getElementById('contact-mensaje').value = '';
+      btn.textContent = 'Enviar Consulta';
+      btn.disabled = false;
+    })
+    .catch(() => {
+      status.style.color = '#ff4444';
+      status.textContent = '✗ Ocurrió un error. Intenta de nuevo o escríbenos directamente.';
+      btn.textContent = 'Enviar Consulta';
+      btn.disabled = false;
+    });
+  }
+</script>
+
 </body>
 
 </html>
