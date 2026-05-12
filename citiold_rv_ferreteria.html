@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CITIOLD RV - Ferretería Industrial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    :root {
+      --bg-deep: #0a0c10;
+      --bg-card: #12161f;
+      --accent-orange: #ff6b00;
+      --accent-glow: rgba(255, 107, 0, 0.3);
+      --text-pure: #ffffff;
+      --text-muted: #94a3b8;
+      --border-color: #1e293b;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--text-pure);
+      font-family: 'Barlow', sans-serif;
+      overflow-x: hidden
+    }
+
+    /* NAVEGACIÓN */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 12, 16, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 70px;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 2px;
+      cursor: pointer
+    }
+
+    .logo span {
+      color: var(--accent-orange)
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none
+    }
+
+    .nav-links li a {
+      display: block;
+      padding: 0 1.5rem;
+      height: 70px;
+      line-height: 70px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: var(--accent-orange);
+      background: rgba(255, 107, 0, 0.05)
+    }
+
+    .nav-wish {
+      background: var(--accent-orange);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+    }
+
+    /* SECCIONES */
+    section {
+      min-height: 100vh;
+      padding-top: 90px;
+      display: none;
+      padding-bottom: 4rem;
+    }
+
+    section.active {
+      display: block
+    }
+
+    .section-header {
+      padding: 0 3rem 2rem;
+      margin-bottom: 2rem
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 60px;
+      line-height: 1
+    }
+
+    .section-subtitle {
+      color: var(--accent-orange);
+      font-family: 'Barlow Condensed';
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 14px
+    }
+
+    /* CATALOGO */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 0 3rem
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      border-radius: 12px;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .product-card:hover {
+      border-color: var(--accent-orange);
+      transform: translateY(-5px)
+    }
+
+    .iva-tag {
+      font-size: 12px;
+      color: var(--accent-orange);
+      font-weight: 700;
+      margin-left: 5px
+    }
+
+    /* COTIZACIÓN */
+    .wish-item {
+      background: var(--bg-card);
+      margin-bottom: 12px;
+      padding: 1.5rem;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: auto 1fr auto auto auto;
+      align-items: center;
+      gap: 20px;
+      border-left: 4px solid var(--accent-orange);
+    }
+
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #000;
+      padding: 5px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+    }
+
+    .qty-btn {
+      background: #1e293b;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* CONTACTO REFINADO */
+    .contact-container {
+      margin: 0 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 20px;
+    }
+
+    .contact-info-card {
+      background: var(--bg-card);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .info-item {
+      margin-bottom: 1.5rem
+    }
+
+    .info-label {
+      color: var(--accent-orange);
+      font-family: 'Barlow Condensed';
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 5px
+    }
+
+    /* MAPA */
+    .map-wrapper {
+      width: 100%;
+      height: 350px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      filter: grayscale(1) invert(0.9) contrast(1.2);
+      transition: 0.5s;
+    }
+
+    .map-wrapper:hover {
+      filter: grayscale(0) invert(0) contrast(1);
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* NOSOTROS GRID */
+    .about-hero {
+      background: #111;
+      padding: 4rem 3rem;
+      margin: 0 3rem 20px;
+      border-radius: 12px;
+      border-left: 6px solid var(--accent-orange);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 0 3rem;
+    }
+
+    .about-card {
+      background: var(--bg-card);
+      padding: 2.5rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .about-card i {
+      font-size: 40px;
+      color: var(--accent-orange);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* TOAST & BUTTONS */
+    .btn-whatsapp {
+      background: #25d366;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-family: 'Barlow Condensed';
+      font-size: 18px;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--accent-orange);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      z-index: 10000;
+      transition: 0.4s;
+      font-weight: 600;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0)
+    }
+
+    @media(max-width:900px) {
+      .contact-row {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-container {
+        margin: 0 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo" onclick="showSection('inicio')">CITIOLD <span>RV</span> </div>
+    <ul class="nav-links">
+      <li><a href="#" class="active" onclick="showSection('inicio');return false">Inicio</a></li>
+      <li><a href="#" onclick="showSection('menu');return false">Catálogo</a></li>
+      <li><a href="#" onclick="showSection('nosotros');return false">Nosotros</a></li>
+      <li><a href="#" onclick="showSection('contacto');return false">Contacto</a></li>
+    </ul>
+    <button class="nav-wish" onclick="showSection('deseos')">
+      <i class="ti ti-shopping-cart"></i> Cotización (<span id="badge">0</span>)
+    </button>
+  </nav>
+
+  <section id="inicio" class="active">
+    <div
+      style="height:80vh; display:flex; align-items:center; padding: 0 3rem; background: radial-gradient(circle at 10% 50%, #1a1f26 0%, #0a0c10 100%);">
+      <div>
+        <div class="section-subtitle">Ferretería Industrial</div>
+        <h1 style="font-family:'Bebas Neue'; font-size:clamp(60px, 10vw, 120px); line-height:0.9; margin: 1rem 0">
+          CITIOLD <span style="color:var(--accent-orange)">RV</span></h1>
+        <p style="max-width:600px; color:var(--text-muted); font-size:18px; margin-bottom:2rem">Suministros de alta
+          resistencia y asesoría técnica para tus proyectos de construcción.</p>
+        <button class="nav-wish" style="padding:15px 40px; font-size:16px" onclick="showSection('menu')">Explorar
+          Catálogo</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="section-header">
+      <h2 class="section-title">CATÁLOGO DE PRODUCTOS</h2>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+  </section>
+
+  <section id="deseos">
+    <div class="section-header">
+      <div class="section-subtitle">Tu Selección</div>
+      <h2 class="section-title">LISTA DE COTIZACIÓN</h2>
+    </div>
+    <div id="wishContent" style="padding: 0 5rem"></div>
+  </section>
+
+  <section id="nosotros">
+    <div class="section-header">
+      <div class="section-subtitle">Quiénes somos</div>
+      <h2 class="section-title">SOBRE NOSOTROS</h2>
+    </div>
+    <div class="about-hero">
+      <h3 style="font-family:'Bebas Neue'; font-size:40px; margin-bottom:1rem">CONSTRUIMOS <span
+          style="color:var(--accent-orange)">CONTIGO</span></h3>
+      <p style="color:var(--text-muted); line-height:1.8; font-size:16px; max-width:800px">En CITIOLD RV llevamos más de
+        3 años siendo el aliado de obra de cientos de familias, contratistas y empresas constructoras. Nuestra misión es
+        ofrecerte el mejor producto al precio justo, con el servicio que mereces.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <i class="ti ti-shield-check"></i>
+        <h4 style="font-family:'Bebas Neue'; font-size:24px">Calidad</h4>
+        <p style="color:var(--text-muted); font-size:14px">Marcas y proveedores certificados con estricto control.</p>
+      </div>
+      <div class="about-card">
+        <i class="ti ti-truck-delivery"></i>
+        <h4 style="font-family:'Bebas Neue'; font-size:24px">Servicio Ágil</h4>
+        <p style="color:var(--text-muted); font-size:14px">Atención inmediata porque entendemos que tu obra no espera.
+        </p>
+      </div>
+      <div class="about-card">
+        <i class="ti ti-users"></i>
+        <h4 style="font-family:'Bebas Neue'; font-size:24px">Expertos</h4>
+        <p style="color:var(--text-muted); font-size:14px">Asesoría técnica para que elijas la solución correcta.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="section-header">
+      <div class="section-subtitle">Atención Personalizada</div>
+      <h2 class="section-title">CONTACTO Y UBICACIÓN</h2>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-row">
+        <div class="contact-info-card">
+          <div class="info-item">
+            <div class="info-label">Dirección</div>
+            <p style="font-weight: 500;">Calle Sergio Buitrón Casas, Col. Cuauhtémoc, Tlahuelilpan, Hidalgo</p>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Atención Directa</div>
+            <p>citiold.rv@gmail.com</p>
+            <p>representante.citioldrv@gmail.com</p>
+            <p>WhatsApp: +52 5548051103</p>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Horarios de Venta</div>
+            <p>Lunes a Viernes: 9:00 am – 6:00 pm</p>
+            <p>Sábado: 9:00 am – 2:00 pm</p>
+          </div>
+        </div>
+
+        <div style="background:#000; padding:2.5rem; border-radius:12px; border:1px solid var(--border-color)">
+          <div class="info-label" style="margin-bottom:1rem">Déjanos un mensaje</div>
+          <input type="text" placeholder="Nombre o Empresa"
+            style="width:100%; background:#111; border:1px solid #333; padding:12px; color:white; margin-bottom:10px; border-radius:4px">
+          <textarea placeholder="Estamos para apoyarte, cuentanos."
+            style="width:100%; background:#111; border:1px solid #333; padding:12px; color:white; height:80px; margin-bottom:10px; border-radius:4px"></textarea>
+          <button class="nav-wish" style="width:100%; justify-content:center"
+            onclick="showToast('Mensaje enviado. Nos contactaremos pronto.')">Enviar Consulta</button>
+        </div>
+      </div>
+
+      <div class="map-wrapper">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d468.22255699308073!2d-99.23562559124021!3d20.143204823369405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d261b417b98e81%3A0xd0642451edc60ce0!2sFERRELECTRICA%20CITIOLD%20RV!5e0!3m2!1ses-419!2smx!4v1778611505188!5m2!1ses-419!2smx"
+          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const WA_NUMBER = '525548051103';
+    const PRODUCTOS = [
+      { id: 1, nombre: 'Taladro percutor 750W', cat: 'herramientas', desc: 'Potente taladro para concreto.', precio: 2450, icon: 'ti-drill' },
+      { id: 2, nombre: 'Nivel láser automático', cat: 'herramientas', desc: 'Proyección 30 metros.', precio: 3800, icon: 'ti-ruler' },
+      { id: 4, nombre: 'Cemento Gris 50kg', cat: 'construccion', desc: 'Uso general CPC 30R.', precio: 185, icon: 'ti-building' },
+      { id: 5, nombre: 'Varilla 3/8" corrugada', cat: 'construccion', desc: 'Grado 40, 12 metros.', precio: 145, icon: 'ti-line' },
+      { id: 7, nombre: 'Cable THHN calibre 12', cat: 'electrico', desc: 'Rollo 100m cobre puro.', precio: 680, icon: 'ti-bolt' }
+    ];
+
+    let wishlist = [];
+
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      const activeLink = Array.from(document.querySelectorAll('.nav-links a')).find(a => a.innerText.toLowerCase().includes(id === 'deseos' ? 'cotización' : id));
+      if (activeLink) activeLink.classList.add('active');
+      if (id === 'deseos') renderWish();
+      window.scrollTo(0, 0);
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      grid.innerHTML = PRODUCTOS.map(p => {
+        const inWish = wishlist.find(w => w.id === p.id);
+        return `
+          <div class="product-card">
+            <div style="font-size:32px; color:var(--accent-orange); margin-bottom:10px"><i class="ti ${p.icon}"></i></div>
+            <h3 style="font-family:'Barlow Condensed'; font-size:20px; font-weight:700">${p.nombre}</h3>
+            <p style="color:var(--text-muted); font-size:13px; margin-bottom:15px">${p.desc}</p>
+            <div style="font-family:'Bebas Neue'; font-size:28px">$${p.precio.toLocaleString()}<span class="iva-tag">+ IVA</span></div>
+            <button class="nav-wish" style="width:100%; margin-top:15px; background:${inWish ? '#1e293b' : ''}" onclick="toggleWish(${p.id})">
+              ${inWish ? 'Añadido' : 'Añadir a Cotización'}
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleWish(id) {
+      const prod = PRODUCTOS.find(p => p.id === id);
+      const index = wishlist.findIndex(w => w.id === id);
+      if (index > -1) { wishlist.splice(index, 1); showToast('Eliminado de la lista'); }
+      else { wishlist.push({ ...prod, qty: 1 }); showToast('¡Añadido!'); }
+      updateBadge(); renderProducts();
+    }
+
+    function updateQty(id, delta) {
+      const item = wishlist.find(w => w.id === id);
+      if (item) { item.qty = Math.max(1, item.qty + delta); renderWish(); updateBadge(); }
+    }
+
+    function updateBadge() {
+      document.getElementById('badge').textContent = wishlist.reduce((acc, curr) => acc + curr.qty, 0);
+    }
+
+    function renderWish() {
+      const cont = document.getElementById('wishContent');
+      if (wishlist.length === 0) {
+        cont.innerHTML = `<div style="text-align:center; padding:5rem; background:var(--bg-card); border-radius:12px; border:1px solid var(--border-color)">
+          <p style="color:var(--text-muted)">Tu lista de cotización está vacía.</p>
+          <button class="nav-wish" style="margin: 1rem auto" onclick="showSection('menu')">Ir al Catálogo</button>
+        </div>`;
+        return;
+      }
+
+      let subtotal = 0;
+      const itemsHtml = wishlist.map(p => {
+        const lineTotal = p.precio * p.qty;
+        subtotal += lineTotal;
+        return `
+          <div class="wish-item">
+            <div style="font-size:24px; color:var(--accent-orange)"><i class="ti ${p.icon}"></i></div>
+            <div><div style="font-weight:700">${p.nombre}</div><div style="font-size:12px; color:var(--text-muted)">$${p.precio} + IVA</div></div>
+            <div class="qty-control">
+              <button class="qty-btn" onclick="updateQty(${p.id}, -1)">-</button>
+              <div style="font-family:'Bebas Neue'; font-size:18px; width:30px; text-align:center">${p.qty}</div>
+              <button class="qty-btn" onclick="updateQty(${p.id}, 1)">+</button>
+            </div>
+            <div style="font-family:'Bebas Neue'; font-size:24px">$${lineTotal.toLocaleString()}</div>
+            <button style="background:none; border:none; color:#ff4444; cursor:pointer" onclick="toggleWish(${p.id})"><i class="ti ti-trash"></i></button>
+          </div>
+        `;
+      }).join('');
+
+      const iva = subtotal * 0.16;
+      const total = subtotal + iva;
+
+      cont.innerHTML = `
+        ${itemsHtml}
+        <div style="margin-top:2rem; background:var(--bg-card); padding:2rem; border-radius:12px; border:1px solid var(--border-color)">
+          <div style="display:flex; justify-content:space-between; margin-bottom:10px"><span>Subtotal:</span><span>$${subtotal.toLocaleString()}</span></div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:10px; color:var(--accent-orange)"><span>IVA (16%):</span><span>$${iva.toLocaleString()}</span></div>
+          <div style="display:flex; justify-content:space-between; font-size:32px; font-family:'Bebas Neue'; border-top:1px solid #333; padding-top:15px"><span>TOTAL:</span><span>$${total.toLocaleString()}</span></div>
+          <button class="btn-whatsapp" onclick="sendWhatsApp(${subtotal}, ${iva}, ${total})"><i class="ti ti-brand-whatsapp"></i> Solicitar por WhatsApp</button>
+        </div>`;
+    }
+
+    function sendWhatsApp(sub, iva, tot) {
+      let msg = `*COTIZACIÓN - CITIOLD RV*\n\n`;
+      wishlist.forEach(p => msg += `• ${p.qty}x ${p.nombre} ($${(p.precio * p.qty).toLocaleString()})\n`);
+      msg += `\n*Subtotal:* $${sub.toLocaleString()}\n*IVA (16%):* $${iva.toLocaleString()}\n*TOTAL:* $${tot.toLocaleString()}`;
+      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`);
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    renderProducts();
+  </script>
+</body>
+
+</html>
