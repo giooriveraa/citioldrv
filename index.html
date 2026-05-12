@@ -341,10 +341,10 @@
       <li><a href="#" class="active" onclick="showSection('inicio');return false">Inicio</a></li>
       <li><a href="#" onclick="showSection('menu');return false">Catálogo</a></li>
       <li><a href="#" onclick="showSection('nosotros');return false">Nosotros</a></li>
-      <li><a href="#" onclick="showSection('contacto');return false">Contacto</a></li>
+      <li><a href="#" onclick="showSection('contacto');return false">Contactános</a></li>
     </ul>
     <button class="nav-wish" onclick="showSection('deseos')">
-      <i class="ti ti-shopping-cart"></i> Cotización (<span id="badge">0</span>)
+      <i class="ti ti-shopping-cart"></i> Lista de deseos (<span id="badge">0</span>)
     </button>
   </nav>
 
@@ -437,7 +437,7 @@
         </div>
 
         <div style="background:#000; padding:2.5rem; border-radius:12px; border:1px solid var(--border-color)">
-          <div class="info-label" style="margin-bottom:1rem">Déjanos un mensaje</div>
+          <div class="info-label" style="margin-bottom:1rem">¿Tienes alguna duda? Escribenos</div>
           <input type="text" placeholder="Nombre o Empresa"
             style="width:100%; background:#111; border:1px solid #333; padding:12px; color:white; margin-bottom:10px; border-radius:4px">
           <textarea placeholder="Estamos para apoyarte, cuentanos."
@@ -561,7 +561,7 @@
       let msg = `*COTIZACIÓN - CITIOLD RV*\n\n`;
       wishlist.forEach(p => msg += `• ${p.qty}x ${p.nombre} ($${(p.precio * p.qty).toLocaleString()})\n`);
       msg += `\n*Subtotal:* $${sub.toLocaleString()}\n*IVA (16%):* $${iva.toLocaleString()}\n*TOTAL:* $${tot.toLocaleString()}`;
-      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`);
+      window.open(`https://wa.me/${525548051103}?text=${encodeURIComponent(msg)}`);
     }
 
     function showToast(msg) {
