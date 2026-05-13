@@ -575,56 +575,56 @@
     }
 
     renderProducts();
-    
+
   </script>
 
   <!-- EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-  // ─── REEMPLAZA ESTOS 3 VALORES CON LOS TUYOS DE EMAILJS ───
-  const EMAILJS_PUBLIC_KEY  = '4zPup5_OhaKMJLCFw';
-  const EMAILJS_SERVICE_ID  = 'service_qi46mff';
-  const EMAILJS_TEMPLATE_ID = 'template_0zofegf';
-  // ──────────────────────────────────────────────────────────
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // ─── REEMPLAZA ESTOS 3 VALORES CON LOS TUYOS DE EMAILJS ───
+    const EMAILJS_PUBLIC_KEY = '4zPup5_OhaKMJLCFw';
+    const EMAILJS_SERVICE_ID = 'service_qi46mff';
+    const EMAILJS_TEMPLATE_ID = 'template_0zofegf';
+    // ──────────────────────────────────────────────────────────
 
-  emailjs.init(EMAILJS_PUBLIC_KEY);
+    emailjs.init(EMAILJS_PUBLIC_KEY);
 
-  function enviarMensaje() {
-    const nombre  = document.getElementById('contact-nombre').value.trim();
-    const mensaje = document.getElementById('contact-mensaje').value.trim();
-    const status  = document.getElementById('contact-status');
-    const btn     = document.getElementById('btn-enviar');
+    function enviarMensaje() {
+      const nombre = document.getElementById('contact-nombre').value.trim();
+      const mensaje = document.getElementById('contact-mensaje').value.trim();
+      const status = document.getElementById('contact-status');
+      const btn = document.getElementById('btn-enviar');
 
-    if (!nombre || !mensaje) {
-      status.style.color = '#ff6b00';
-      status.textContent = 'Por favor completa todos los campos.';
-      return;
+      if (!nombre || !mensaje) {
+        status.style.color = '#ff6b00';
+        status.textContent = 'Por favor completa todos los campos.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+      status.textContent = '';
+
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        nombre: nombre,
+        mensaje: mensaje
+      })
+        .then(() => {
+          status.style.color = '#4caf50';
+          status.textContent = '✓ Mensaje enviado. ¡Nos pondremos en contacto pronto!';
+          document.getElementById('contact-nombre').value = '';
+          document.getElementById('contact-mensaje').value = '';
+          btn.textContent = 'Enviar Consulta';
+          btn.disabled = false;
+        })
+        .catch(() => {
+          status.style.color = '#ff4444';
+          status.textContent = '✗ Ocurrió un error. Intenta de nuevo o escríbenos directamente.';
+          btn.textContent = 'Enviar Consulta';
+          btn.disabled = false;
+        });
     }
-
-    btn.disabled = true;
-    btn.textContent = 'Enviando...';
-    status.textContent = '';
-
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      nombre:  nombre,
-      mensaje: mensaje
-    })
-    .then(() => {
-      status.style.color = '#4caf50';
-      status.textContent = '✓ Mensaje enviado. ¡Nos pondremos en contacto pronto!';
-      document.getElementById('contact-nombre').value  = '';
-      document.getElementById('contact-mensaje').value = '';
-      btn.textContent = 'Enviar Consulta';
-      btn.disabled = false;
-    })
-    .catch(() => {
-      status.style.color = '#ff4444';
-      status.textContent = '✗ Ocurrió un error. Intenta de nuevo o escríbenos directamente.';
-      btn.textContent = 'Enviar Consulta';
-      btn.disabled = false;
-    });
-  }
-</script>
+  </script>
 
 </body>
 
