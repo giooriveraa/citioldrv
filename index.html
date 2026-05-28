@@ -166,6 +166,57 @@
       margin-left: 5px
     }
 
+    /* FILTROS CATÁLOGO */
+    .filtro-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 9px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s;
+    }
+
+    .filtro-btn:hover {
+      border-color: var(--accent-orange);
+      color: var(--accent-orange);
+    }
+
+    .filtro-activo {
+      background: var(--accent-orange) !important;
+      border-color: var(--accent-orange) !important;
+      color: white !important;
+    }
+
+    .cat-titulo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--text-pure);
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cat-titulo i {
+      color: var(--accent-orange);
+      font-size: 28px;
+    }
+
+    .cat-bloque {
+      margin-bottom: 3rem;
+    }
+
     /* COTIZACIÓN */
     .wish-item {
       background: var(--bg-card);
@@ -544,12 +595,61 @@
 
   <section id="menu">
     <div class="section-header">
+      <div class="section-subtitle">Explora</div>
       <h2 class="section-title">CATÁLOGO DE PRODUCTOS</h2>
     </div>
-    <div class="products-grid" id="productsGrid"></div>
+
+    <!-- BUSCADOR + CONTADOR -->
+    <div style="padding:0 3rem 1.5rem; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:220px; position:relative;">
+        <i class="ti ti-search"
+          style="position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:18px;"></i>
+        <input id="buscador" type="text" placeholder="Buscar producto..." oninput="filtrarCatalogo()"
+          style="width:100%; background:var(--bg-card); border:1px solid var(--border-color); border-radius:8px;
+        padding:12px 14px 12px 42px; color:white; font-family:'Barlow',sans-serif; font-size:15px; outline:none; transition:0.3s;" onfocus="this.style.borderColor='var(--accent-orange)'"
+          onblur="this.style.borderColor='var(--border-color)'">
+      </div>
+      <div id="contadorResultados"
+        style="font-family:'Barlow Condensed'; font-size:13px; letter-spacing:1px; color:var(--text-muted); white-space:nowrap;">
+      </div>
+    </div>
+
+    <!-- FILTROS POR CATEGORÍA -->
+    <div style="padding:0 3rem 2rem; display:flex; gap:10px; flex-wrap:wrap;" id="filtrosBtns">
+      <button onclick="setFiltro('todo', this)" class="filtro-btn filtro-activo">
+        <i class="ti ti-layout-grid"></i> Todo
+      </button>
+      <button onclick="setFiltro('herramientas', this)" class="filtro-btn">
+        <i class="ti ti-tools"></i> Herramientas
+      </button>
+      <button onclick="setFiltro('construccion', this)" class="filtro-btn">
+        <i class="ti ti-building"></i> Construcción
+      </button>
+      <button onclick="setFiltro('electrico', this)" class="filtro-btn">
+        <i class="ti ti-bolt"></i> Eléctrico
+      </button>
+      <button onclick="setFiltro('plomeria', this)" class="filtro-btn">
+        <i class="ti ti-droplet"></i> Plomería
+      </button>
+      <button onclick="setFiltro('seguridad', this)" class="filtro-btn">
+        <i class="ti ti-hardhat"></i> Seguridad
+      </button>
+    </div>
+
+    <!-- GRID POR CATEGORÍAS -->
+    <div id="catalogoContenido" style="padding:0 3rem;"></div>
+
+    <!-- SIN RESULTADOS -->
+    <div id="sinResultados" style="display:none; text-align:center; padding:4rem 3rem;">
+      <i class="ti ti-search-off"
+        style="font-size:48px; color:var(--border-color); display:block; margin-bottom:1rem;"></i>
+      <p style="color:var(--text-muted); font-size:16px;">No se encontraron productos para "<span
+          id="terminoBusqueda"></span>"</p>
+      <button class="nav-wish" style="margin:1.5rem auto" onclick="limpiarBusqueda()">Ver todos los productos</button>
+    </div>
 
     <!-- CTA WHATSAPP -->
-    <div style="margin:0 3rem 2rem; background:linear-gradient(135deg, #0d1117 0%, #1a1f26 100%);
+    <div style="margin:3rem 3rem 2rem; background:linear-gradient(135deg, #0d1117 0%, #1a1f26 100%);
     border:1px solid var(--border-color); border-radius:16px; padding:3rem;
     display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:2rem;
     position:relative; overflow:hidden;">
@@ -559,11 +659,9 @@
         <div
           style="font-family:'Barlow Condensed'; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#25d366; margin-bottom:0.5rem;">
           Atención directa</div>
-        <h3 style="font-family:'Bebas Neue'; font-size:36px; margin-bottom:0.5rem;"> Si no encuentras lo que buscas,
-          pregunta a nuestros asesores de venta y con gusto te apoyaremos
-        </h3>
-        <p style="color:var(--text-muted); font-size:15px;">Escríbenos por WhatsApp y te respondemos al momento. Sin
-          esperas, sin formularios.</p>
+        <h3 style="font-family:'Bebas Neue'; font-size:36px; margin-bottom:0.5rem;">¿No encuentras lo que buscas?</h3>
+        <p style="color:var(--text-muted); font-size:15px;">Pregunta a nuestros asesores — te respondemos al momento.
+        </p>
       </div>
       <button onclick="window.open('https://wa.me/525548051103','_blank')" style="background:#25d366; color:white; border:none; padding:18px 40px; border-radius:8px; cursor:pointer;
       font-family:'Barlow Condensed'; font-weight:700; font-size:18px; letter-spacing:1px; text-transform:uppercase;
@@ -797,22 +895,103 @@
       window.scrollTo(0, 0);
     }
 
-    function renderProducts() {
-      const grid = document.getElementById('productsGrid');
-      grid.innerHTML = PRODUCTOS.map(p => {
-        const inWish = wishlist.find(w => w.id === p.id);
+    // ── CONFIGURACIÓN DE CATEGORÍAS ──────────────────────────
+    const CATEGORIAS = {
+      herramientas: { label: 'Herramientas', icon: 'ti-tools' },
+      construccion: { label: 'Construcción', icon: 'ti-building' },
+      electrico: { label: 'Eléctrico', icon: 'ti-bolt' },
+      plomeria: { label: 'Plomería', icon: 'ti-droplet' },
+      seguridad: { label: 'Seguridad', icon: 'ti-hardhat' },
+    };
+
+    let filtroActivo = 'todo';
+
+    function setFiltro(cat, btn) {
+      filtroActivo = cat;
+      document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('filtro-activo'));
+      btn.classList.add('filtro-activo');
+      document.getElementById('buscador').value = '';
+      filtrarCatalogo();
+    }
+
+    function limpiarBusqueda() {
+      document.getElementById('buscador').value = '';
+      filtroActivo = 'todo';
+      document.querySelectorAll('.filtro-btn').forEach((b, i) => {
+        b.classList.toggle('filtro-activo', i === 0);
+      });
+      filtrarCatalogo();
+    }
+
+    function filtrarCatalogo() {
+      const busqueda = document.getElementById('buscador').value.toLowerCase().trim();
+      const grid = document.getElementById('catalogoContenido');
+      const sinRes = document.getElementById('sinResultados');
+      const contador = document.getElementById('contadorResultados');
+
+      let productosFiltrados = PRODUCTOS.filter(p => {
+        const coincideCat = filtroActivo === 'todo' || p.cat === filtroActivo;
+        const coincideBusq = !busqueda ||
+          p.nombre.toLowerCase().includes(busqueda) ||
+          p.desc.toLowerCase().includes(busqueda) ||
+          p.cat.toLowerCase().includes(busqueda);
+        return coincideCat && coincideBusq;
+      });
+
+      if (!productosFiltrados.length) {
+        grid.innerHTML = '';
+        sinRes.style.display = 'block';
+        document.getElementById('terminoBusqueda').textContent = busqueda || filtroActivo;
+        contador.textContent = '';
+        return;
+      }
+
+      sinRes.style.display = 'none';
+      contador.textContent = `${productosFiltrados.length} producto${productosFiltrados.length !== 1 ? 's' : ''}`;
+
+      // Agrupar por categoría
+      const agrupados = {};
+      productosFiltrados.forEach(p => {
+        if (!agrupados[p.cat]) agrupados[p.cat] = [];
+        agrupados[p.cat].push(p);
+      });
+
+      // Si hay filtro activo o búsqueda, no mostrar subtítulos de categoría
+      const mostrarCats = filtroActivo === 'todo' && !busqueda;
+
+      grid.innerHTML = Object.entries(agrupados).map(([cat, prods]) => {
+        const info = CATEGORIAS[cat] || { label: cat, icon: 'ti-package' };
         return `
-          <div class="product-card">
-            <div style="font-size:32px; color:var(--accent-orange); margin-bottom:10px"><i class="ti ${p.icon}"></i></div>
-            <h3 style="font-family:'Barlow Condensed'; font-size:20px; font-weight:700">${p.nombre}</h3>
-            <p style="color:var(--text-muted); font-size:13px; margin-bottom:15px">${p.desc}</p>
-            <div style="font-family:'Bebas Neue'; font-size:28px">$${p.precio.toLocaleString()}<span class="iva-tag">+ IVA</span></div>
-            <button class="nav-wish" style="width:100%; margin-top:15px; background:${inWish ? '#1e293b' : ''}" onclick="toggleWish(${p.id})">
-              ${inWish ? 'Añadido' : 'Añadir a Cotización'}
-            </button>
-          </div>
-        `;
+      <div class="cat-bloque">
+        ${mostrarCats ? `
+        <div class="cat-titulo">
+          <i class="ti ${info.icon}"></i> ${info.label}
+        </div>` : ''}
+        <div class="products-grid" style="padding:0; margin-bottom:0;">
+          ${prods.map(p => tarjetaProducto(p)).join('')}
+        </div>
+      </div>
+    `;
       }).join('');
+    }
+
+    function tarjetaProducto(p) {
+      const inWish = wishlist.find(w => w.id === p.id);
+      return `
+    <div class="product-card">
+      <div style="font-size:32px; color:var(--accent-orange); margin-bottom:10px"><i class="ti ${p.icon}"></i></div>
+      <h3 style="font-family:'Barlow Condensed'; font-size:20px; font-weight:700">${p.nombre}</h3>
+      <p style="color:var(--text-muted); font-size:13px; margin-bottom:15px">${p.desc}</p>
+      <div style="font-family:'Bebas Neue'; font-size:28px">$${p.precio.toLocaleString()}<span class="iva-tag">+ IVA</span></div>
+      <button class="nav-wish" style="width:100%; margin-top:15px; background:${inWish ? '#1e293b' : ''}" onclick="toggleWish(${p.id})">
+        ${inWish ? '<i class="ti ti-check"></i> Añadido' : '<i class="ti ti-shopping-cart"></i> Añadir a Cotización'}
+      </button>
+    </div>
+  `;
+    }
+
+    function renderProducts() {
+      filtrarCatalogo();
     }
 
     function toggleWish(id) {
@@ -907,6 +1086,7 @@
 
     renderProducts();
     renderDestacados();
+    filtrarCatalogo();
 
   </script>
 
