@@ -852,6 +852,12 @@
           <input id="contact-nombre" type="text" placeholder="nombre"
             style="width:100%; background:#111; border:1px solid #333; padding:12px; color:white; margin-bottom:10px; border-radius:4px">
 
+          <input id="contact-correo" type="text" placeholder="correo"
+            style="width:100%; background:#111; border:1px solid #333; padding:12px; color:white; margin-bottom:10px; border-radius:4px">
+
+          <input id="contact-telefono" type="text" placeholder="telefono"
+            style="width:100%; background:#111; border:1px solid #333; padding:12px; color:white; margin-bottom:10px; border-radius:4px">
+
           <textarea id="contact-mensaje" placeholder="mensaje"
             style="width:100%; background:#111; border:1px solid #333; padding:12px; color:white; height:80px; margin-bottom:10px; border-radius:4px; resize:vertical"></textarea>
 
@@ -1110,11 +1116,13 @@
 
     function enviarMensaje() {
       const nombre = document.getElementById('contact-nombre').value.trim();
+      const correo = document.getElementById('contact-correo').value.trim();
+      const telefono = document.getElementById('contact-telefono').value.trim();
       const mensaje = document.getElementById('contact-mensaje').value.trim();
       const status = document.getElementById('contact-status');
       const btn = document.getElementById('btn-enviar');
 
-      if (!nombre || !mensaje) {
+      if (!nombre || !correo || !telefono || !mensaje) {
         status.style.color = '#ff6b00';
         status.textContent = 'Por favor completa todos los campos.';
         return;
@@ -1126,12 +1134,16 @@
 
       emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
         nombre: nombre,
+        correo: correo,
+        telefono: telefono,
         mensaje: mensaje
       })
         .then(() => {
           status.style.color = '#4caf50';
           status.textContent = '✓ Mensaje enviado. ¡Nos pondremos en contacto pronto!';
           document.getElementById('contact-nombre').value = '';
+          document.getElementById('contact-correo').value = '';
+          document.getElementById('contact-telefono').value = '';
           document.getElementById('contact-mensaje').value = '';
           btn.textContent = 'Enviar Consulta';
           btn.disabled = false;
