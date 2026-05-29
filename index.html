@@ -5,383 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CITIOLD RV - Ferretería Industrial</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box
-    }
-
-    :root {
-      --bg-deep: #0a0c10;
-      --bg-card: #12161f;
-      --accent-orange: #ff6b00;
-      --accent-glow: rgba(255, 107, 0, 0.3);
-      --text-pure: #ffffff;
-      --text-muted: #94a3b8;
-      --border-color: #1e293b;
-    }
-
-    html {
-      scroll-behavior: smooth
-    }
-
-    body {
-      background: var(--bg-deep);
-      color: var(--text-pure);
-      font-family: 'Barlow', sans-serif;
-      overflow-x: hidden
-    }
-
-    /* NAVEGACIN */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(10, 12, 16, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 2rem;
-      height: 70px;
-    }
-
-    .logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
-      letter-spacing: 2px;
-      cursor: pointer
-    }
-
-    .logo span {
-      color: var(--accent-orange)
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none
-    }
-
-    .nav-links li a {
-      display: block;
-      padding: 0 1.5rem;
-      height: 70px;
-      line-height: 70px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .nav-links li a:hover,
-    .nav-links li a.active {
-      color: var(--accent-orange);
-      background: rgba(255, 107, 0, 0.05)
-    }
-
-    .nav-wish {
-      background: var(--accent-orange);
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 4px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-    }
-
-    /* SECCIONES */
-    section {
-      min-height: 100vh;
-      padding-top: 90px;
-      display: none;
-      padding-bottom: 4rem;
-    }
-
-    section.active {
-      display: block
-    }
-
-    .section-header {
-      padding: 0 3rem 2rem;
-      margin-bottom: 2rem
-    }
-
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 60px;
-      line-height: 1
-    }
-
-    .section-subtitle {
-      color: var(--accent-orange);
-      font-family: 'Barlow Condensed';
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      font-size: 14px
-    }
-
-    /* CATALOGO */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 0 3rem
-    }
-
-    .product-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 2rem;
-      border-radius: 12px;
-      transition: 0.3s;
-      position: relative;
-    }
-
-    .product-card:hover {
-      border-color: var(--accent-orange);
-      transform: translateY(-5px)
-    }
-
-    .iva-tag {
-      font-size: 12px;
-      color: var(--accent-orange);
-      font-weight: 700;
-      margin-left: 5px
-    }
-
-    /* FILTROS CATÁLOGO */
-    .filtro-btn {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      color: var(--text-muted);
-      padding: 9px 18px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: 0.2s;
-    }
-
-    .filtro-btn:hover {
-      border-color: var(--accent-orange);
-      color: var(--accent-orange);
-    }
-
-    .filtro-activo {
-      background: var(--accent-orange) !important;
-      border-color: var(--accent-orange) !important;
-      color: white !important;
-    }
-
-    .cat-titulo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
-      color: var(--text-pure);
-      margin-bottom: 1rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 2px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .cat-titulo i {
-      color: var(--accent-orange);
-      font-size: 28px;
-    }
-
-    .cat-bloque {
-      margin-bottom: 3rem;
-    }
-
-    /* COTIZACIÓN */
-    .wish-item {
-      background: var(--bg-card);
-      margin-bottom: 12px;
-      padding: 1.5rem;
-      border-radius: 10px;
-      display: grid;
-      grid-template-columns: auto 1fr auto auto auto;
-      align-items: center;
-      gap: 20px;
-      border-left: 4px solid var(--accent-orange);
-    }
-
-    .qty-control {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #000;
-      padding: 5px;
-      border-radius: 6px;
-      border: 1px solid var(--border-color);
-    }
-
-    .qty-btn {
-      background: #1e293b;
-      color: white;
-      border: none;
-      width: 30px;
-      height: 30px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    /* CONTACTO REFINADO */
-    .contact-container {
-      margin: 0 3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .contact-row {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 20px;
-    }
-
-    .contact-info-card {
-      background: var(--bg-card);
-      padding: 2.5rem;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-    }
-
-    .info-item {
-      margin-bottom: 1.5rem
-    }
-
-    .info-label {
-      color: var(--accent-orange);
-      font-family: 'Barlow Condensed';
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 12px;
-      margin-bottom: 5px
-    }
-
-    /* MAPA */
-    .map-wrapper {
-      width: 100%;
-      height: 350px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-      filter: grayscale(1) invert(0.9) contrast(1.2);
-      transition: 0.5s;
-    }
-
-    .map-wrapper:hover {
-      filter: grayscale(0) invert(0) contrast(1);
-    }
-
-    .map-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* NOSOTROS GRID */
-    .about-hero {
-      background: #111;
-      padding: 4rem 3rem;
-      margin: 0 3rem 20px;
-      border-radius: 12px;
-      border-left: 6px solid var(--accent-orange);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin: 0 3rem;
-    }
-
-    .about-card {
-      background: var(--bg-card);
-      padding: 2.5rem;
-      border-radius: 12px;
-      text-align: center;
-    }
-
-    .about-card i {
-      font-size: 40px;
-      color: var(--accent-orange);
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    /* TOAST & BUTTONS */
-    .btn-whatsapp {
-      background: #25d366;
-      color: white;
-      padding: 20px;
-      border-radius: 8px;
-      width: 100%;
-      border: none;
-      cursor: pointer;
-      font-weight: 700;
-      font-family: 'Barlow Condensed';
-      font-size: 18px;
-      margin-top: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .toast {
-      position: fixed;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: var(--accent-orange);
-      color: white;
-      padding: 15px 30px;
-      border-radius: 50px;
-      z-index: 10000;
-      transition: 0.4s;
-      font-weight: 600;
-    }
-
-    .toast.show {
-      transform: translateX(-50%) translateY(0)
-    }
-
-    @media(max-width:900px) {
-      .contact-row {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-container {
-        margin: 0 1rem;
-      }
-    }
-  </style>
+  
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -389,10 +19,10 @@
   <nav>
     <div class="logo" onclick="showSection('inicio')">CITIOLD <span>RV</span> </div>
     <ul class="nav-links">
-      <li><a href="#" class="active" onclick="showSection('inicio');return false">Inicio</a></li>
-      <li><a href="#" onclick="showSection('menu');return false">Catálogo</a></li>
-      <li><a href="#" onclick="showSection('nosotros');return false">Nosotros</a></li>
-      <li><a href="#" onclick="showSection('contacto');return false">Contactános</a></li>
+      <li><a href="#" id="link-inicio" class="active" onclick="showSection('inicio');return false">Inicio</a></li>
+      <li><a href="#" id="link-menu" onclick="showSection('menu');return false">Catálogo</a></li>
+      <li><a href="#" id="link-nosotros" onclick="showSection('nosotros');return false">Nosotros</a></li>
+      <li><a href="#" id="link-contacto" onclick="showSection('contacto');return false">Contáctanos</a></li>
     </ul>
     <button class="nav-wish" onclick="showSection('deseos')">
       <i class="ti ti-shopping-cart"></i> Lista de deseos (<span id="badge">0</span>)
@@ -400,197 +30,122 @@
   </nav>
 
   <section id="inicio" class="active">
+    <div class="hero-container">
+      <div class="hero-grid-bg"></div>
 
-    <!-- HERO -->
-    <div style="min-height:85vh; display:flex; align-items:center; padding:0 3rem; position:relative; overflow:hidden;
-    background: radial-gradient(circle at 10% 50%, #1a1f26 0%, #0a0c10 100%);">
+      <div class="hero-circle-large"></div>
+      <div class="hero-circle-medium"></div>
 
-      <!-- Cuadrícula de fondo -->
-      <div style="position:absolute; inset:0; pointer-events:none;
-      background-image: linear-gradient(rgba(255,107,0,0.04) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,107,0,0.04) 1px, transparent 1px);
-      background-size: 50px 50px;"></div>
-
-      <!-- Círculo decorativo -->
-      <div style="position:absolute; right:-100px; top:50%; transform:translateY(-50%);
-      width:600px; height:600px; border-radius:50%;
-      border:1px solid rgba(255,107,0,0.08);
-      box-shadow:0 0 120px rgba(255,107,0,0.06); pointer-events:none;"></div>
-      <div style="position:absolute; right:50px; top:50%; transform:translateY(-50%);
-      width:350px; height:350px; border-radius:50%;
-      border:1px solid rgba(255,107,0,0.12); pointer-events:none;"></div>
-
-      <!-- Contenido -->
-      <div style="position:relative; z-index:2; max-width:700px;">
-        <div class="section-subtitle" style="margin-bottom:1.2rem; display:flex; align-items:center; gap:10px;">
-          <span style="width:30px; height:2px; background:var(--accent-orange); display:inline-block;"></span>
+      <div class="hero-content">
+        <div class="section-subtitle hero-subtitle">
+          <span class="subtitle-line"></span>
           Ferretería Industrial · Tlahuelilpan, Hidalgo
         </div>
-        <h1 style="font-family:'Bebas Neue'; font-size:clamp(60px,10vw,120px); line-height:0.9; margin-bottom:1.5rem;">
-          CITIOLD <span style="color:var(--accent-orange)">RV</span>
+        <h1 class="hero-title">
+          CITIOLD <span>RV</span>
         </h1>
-        <p style="max-width:560px; color:var(--text-muted); font-size:18px; line-height:1.7; margin-bottom:2.5rem;">
-          Suministros de alta resistencia y asesoría técnica para tus proyectos de construcción. Trabajamos con las
-          mejores marcas del mercado.
+        <p class="hero-description">
+          Suministros de alta resistencia y asesoría técnica para tus proyectos de construcción. Trabajamos con las mejores marcas del mercado.
         </p>
-        <div style="display:flex; gap:14px; flex-wrap:wrap;">
-          <button class="nav-wish" style="padding:15px 40px; font-size:16px; letter-spacing:1px;"
-            onclick="showSection('menu')">
+        <div class="hero-buttons">
+          <button class="nav-wish hero-btn-explore" onclick="showSection('menu')">
             <i class="ti ti-grid-dots"></i> Explorar Catálogo
           </button>
-          <button onclick="window.open('https://wa.me/525548051103','_blank')"
-            style="padding:15px 40px; font-size:16px; font-family:'Barlow Condensed'; font-weight:700; letter-spacing:1px;
-          background:transparent; border:1px solid var(--border-color); color:var(--text-muted); border-radius:4px; cursor:pointer; transition:0.3s; display:flex; align-items:center; gap:8px;"
-            onmouseover="this.style.borderColor='#25d366';this.style.color='#25d366'"
-            onmouseout="this.style.borderColor='var(--border-color)';this.style.color='var(--text-muted)'">
+          <button onclick="abrirWhatsappDirecto()" class="hero-btn-whatsapp">
             <i class="ti ti-brand-whatsapp"></i> Cotizar por WhatsApp
           </button>
         </div>
 
-        <!-- Estadísticas -->
-        <div
-          style="display:flex; gap:3rem; margin-top:3.5rem; padding-top:2.5rem; border-top:1px solid var(--border-color);">
-          <div>
-            <div style="font-family:'Bebas Neue'; font-size:42px; color:var(--accent-orange); line-height:1;">3+</div>
-            <div
-              style="font-family:'Barlow Condensed'; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-top:4px;">
-              Años de experiencia</div>
+        <div class="stats-container">
+          <div class="stat-box">
+            <div class="stat-number">3+</div>
+            <div class="stat-label">Años de experiencia</div>
           </div>
-          <div>
-            <div style="font-family:'Bebas Neue'; font-size:42px; color:var(--accent-orange); line-height:1;">500+</div>
-            <div
-              style="font-family:'Barlow Condensed'; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-top:4px;">
-              Productos disponibles</div>
+          <div class="stat-box">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Productos disponibles</div>
           </div>
-          <div>
-            <div style="font-family:'Bebas Neue'; font-size:42px; color:var(--accent-orange); line-height:1;">5</div>
-            <div
-              style="font-family:'Barlow Condensed'; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-top:4px;">
-              Marcas líderes</div>
+          <div class="stat-box">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Marcas líderes</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- FRANJA DE PROPUESTA DE VALOR -->
-    <div
-      style="background:var(--accent-orange); padding:1rem 3rem; display:flex; justify-content:center; gap:4rem; flex-wrap:wrap;">
-      <div
-        style="display:flex; align-items:center; gap:10px; font-family:'Barlow Condensed'; font-weight:700; font-size:15px; letter-spacing:1px; text-transform:uppercase;">
-        <i class="ti ti-clock-bolt" style="font-size:20px;"></i> Cotización inmediata por WhatsApp
-      </div>
-      <div
-        style="display:flex; align-items:center; gap:10px; font-family:'Barlow Condensed'; font-weight:700; font-size:15px; letter-spacing:1px; text-transform:uppercase;">
-        <i class="ti ti-certificate" style="font-size:20px;"></i> Marcas certificadas
-      </div>
-      <div
-        style="display:flex; align-items:center; gap:10px; font-family:'Barlow Condensed'; font-weight:700; font-size:15px; letter-spacing:1px; text-transform:uppercase;">
-        <i class="ti ti-headset" style="font-size:20px;"></i> Asesoría técnica incluida
-      </div>
-      <div
-        style="display:flex; align-items:center; gap:10px; font-family:'Barlow Condensed'; font-weight:700; font-size:15px; letter-spacing:1px; text-transform:uppercase;">
-        <i class="ti ti-map-pin" style="font-size:20px;"></i> Tlahuelilpan, Hidalgo
+    <div class="value-strip">
+      <div class="strip-item"><i class="ti ti-clock-bolt"></i> Cotización inmediata por WhatsApp</div>
+      <div class="strip-item"><i class="ti ti-certificate"></i> Marcas certificadas</div>
+      <div class="strip-item"><i class="ti ti-headset"></i> Asesoría técnica incluida</div>
+      <div class="strip-item"><i class="ti ti-map-pin"></i> Tlahuelilpan, Hidalgo</div>
+    </div>
+
+    <div class="quick-access-container">
+      <div class="section-subtitle quick-subtitle">Acceso rápido</div>
+      <h2 class="quick-title">EXPLORA POR CATEGORÍA</h2>
+      <div class="quick-grid">
+        <div onclick="irACategoria('herramientas')" class="quick-card">
+          <i class="ti ti-tools"></i>
+          <div class="quick-card-name">Herramientas</div>
+          <div class="quick-card-desc">Manuales y eléctricas</div>
+        </div>
+        <div onclick="irACategoria('construccion')" class="quick-card">
+          <i class="ti ti-building"></i>
+          <div class="quick-card-name">Construcción</div>
+          <div class="quick-card-desc">Cemento, varilla, block</div>
+        </div>
+        <div onclick="irACategoria('electrico')" class="quick-card">
+          <i class="ti ti-bolt"></i>
+          <div class="quick-card-name">Eléctrico</div>
+          <div class="quick-card-desc">Cable, tableros, canaleta</div>
+        </div>
+        <div onclick="irACategoria('plomeria')" class="quick-card">
+          <i class="ti ti-droplet"></i>
+          <div class="quick-card-name">Plomería</div>
+          <div class="quick-card-desc">Tubería, válvulas, conexiones</div>
+        </div>
+        <div onclick="irACategoria('seguridad')" class="quick-card">
+          <i class="ti ti-hardhat"></i>
+          <div class="quick-card-name">Seguridad</div>
+          <div class="quick-card-desc">EPP y protección personal</div>
+        </div>
       </div>
     </div>
 
-    <!-- CATEGORÍAS DE ACCESO RÁPIDO -->
-    <div style="padding:3rem 3rem 2rem;">
-      <div class="section-subtitle" style="margin-bottom:0.5rem;">Acceso rápido</div>
-      <h2 style="font-family:'Bebas Neue'; font-size:40px; margin-bottom:2rem;">EXPLORA POR CATEGORÍA</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(180px,1fr)); gap:14px;">
-
-        <div onclick="irACategoria('herramientas')"
-          style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:2rem 1.5rem; text-align:center; cursor:pointer; transition:0.3s;"
-          onmouseover="this.style.borderColor='var(--accent-orange)';this.style.transform='translateY(-4px)'"
-          onmouseout="this.style.borderColor='var(--border-color)';this.style.transform='translateY(0)'">
-          <i class="ti ti-tools"
-            style="font-size:36px; color:var(--accent-orange); display:block; margin-bottom:0.8rem;"></i>
-          <div style="font-family:'Bebas Neue'; font-size:20px;">Herramientas</div>
-          <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Manuales y eléctricas</div>
-        </div>
-
-        <div onclick="irACategoria('construccion')"
-          style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:2rem 1.5rem; text-align:center; cursor:pointer; transition:0.3s;"
-          onmouseover="this.style.borderColor='var(--accent-orange)';this.style.transform='translateY(-4px)'"
-          onmouseout="this.style.borderColor='var(--border-color)';this.style.transform='translateY(0)'">
-          <i class="ti ti-building"
-            style="font-size:36px; color:var(--accent-orange); display:block; margin-bottom:0.8rem;"></i>
-          <div style="font-family:'Bebas Neue'; font-size:20px;">Construcción</div>
-          <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Cemento, varilla, block</div>
-        </div>
-
-        <div onclick="irACategoria('electrico')"
-          style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:2rem 1.5rem; text-align:center; cursor:pointer; transition:0.3s;"
-          onmouseover="this.style.borderColor='var(--accent-orange)';this.style.transform='translateY(-4px)'"
-          onmouseout="this.style.borderColor='var(--border-color)';this.style.transform='translateY(0)'">
-          <i class="ti ti-bolt"
-            style="font-size:36px; color:var(--accent-orange); display:block; margin-bottom:0.8rem;"></i>
-          <div style="font-family:'Bebas Neue'; font-size:20px;">Eléctrico</div>
-          <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Cable, tableros, canaleta</div>
-        </div>
-
-        <div onclick="irACategoria('plomeria')"
-          style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:2rem 1.5rem; text-align:center; cursor:pointer; transition:0.3s;"
-          onmouseover="this.style.borderColor='var(--accent-orange)';this.style.transform='translateY(-4px)'"
-          onmouseout="this.style.borderColor='var(--border-color)';this.style.transform='translateY(0)'">
-          <i class="ti ti-droplet"
-            style="font-size:36px; color:var(--accent-orange); display:block; margin-bottom:0.8rem;"></i>
-          <div style="font-family:'Bebas Neue'; font-size:20px;">Plomería</div>
-          <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Tubería, válvulas, conexiones</div>
-        </div>
-
-        <div onclick="irACategoria('seguridad')"
-          style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:2rem 1.5rem; text-align:center; cursor:pointer; transition:0.3s;"
-          onmouseover="this.style.borderColor='var(--accent-orange)';this.style.transform='translateY(-4px)'"
-          onmouseout="this.style.borderColor='var(--border-color)';this.style.transform='translateY(0)'">
-          <i class="ti ti-hardhat"
-            style="font-size:36px; color:var(--accent-orange); display:block; margin-bottom:0.8rem;"></i>
-          <div style="font-family:'Bebas Neue'; font-size:20px;">Segurida
-            d</div>
-          <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">EPP y protección personal</div>
-        </div>
-
+    <div class="featured-container">
+      <div class="featured-header">
+        <div class="section-subtitle featured-subtitle">Lo más solicitado</div>
+        <h2 class="featured-title">PRODUCTOS DESTACADOS</h2>
       </div>
-    </div>
 
-    <!-- PRODUCTOS DESTACADOS -->
-    <div style="padding:1rem 3rem 3rem;">
-      <div class="section-subtitle" style="margin-bottom:0.5rem;">Lo más solicitado</div>
-      <h2 style="font-family:'Bebas Neue'; font-size:40px; margin-bottom:2rem;">PRODUCTOS DESTACADOS</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:16px;"
-        id="destacadosGrid"></div>
-      <div style="text-align:center; margin-top:2rem;">
-        <button class="nav-wish" style="padding:14px 40px; font-size:15px;" onclick="showSection('menu')">
+      <div class="carrusel-wrapper">
+        <div id="carruselTrack" class="carrusel-track"></div>
+      </div>
+
+      <div class="carrusel-controls">
+        <button onclick="moverCarrusel(-1)" class="carrusel-control-btn"><i class="ti ti-chevron-left"></i></button>
+        <div id="carruselDots" class="carrusel-dots"></div>
+        <button onclick="moverCarrusel(1)" class="carrusel-control-btn"><i class="ti ti-chevron-right"></i></button>
+      </div>
+
+      <div class="featured-footer">
+        <button class="nav-wish featured-view-all" onclick="showSection('menu')">
           <i class="ti ti-grid-dots"></i> Ver catálogo completo
         </button>
       </div>
     </div>
 
-    <!-- CTA WHATSAPP -->
-    <div style="margin:0 3rem 2rem; background:linear-gradient(135deg, #0d1117 0%, #1a1f26 100%);
-    border:1px solid var(--border-color); border-radius:16px; padding:3rem;
-    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:2rem;
-    position:relative; overflow:hidden;">
-      <div style="position:absolute; right:-40px; top:-40px; width:200px; height:200px; border-radius:50%;
-      background:rgba(37,211,102,0.05); pointer-events:none;"></div>
-      <div style="position:relative; z-index:1;">
-        <div
-          style="font-family:'Barlow Condensed'; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#25d366; margin-bottom:0.5rem;">
-          Atención directa</div>
-        <h3 style="font-family:'Bebas Neue'; font-size:36px; margin-bottom:0.5rem;"> Si no encuentras lo que buscas,
-          pregunta a nuestros asesores de venta y con gusto te apoyaremos
-        </h3>
-        <p style="color:var(--text-muted); font-size:15px;">Escríbenos por WhatsApp y te respondemos al momento. Sin
-          esperas, sin formularios.</p>
+    <div class="cta-whatsapp-box">
+      <div class="cta-whatsapp-bg-circle"></div>
+      <div class="cta-whatsapp-content">
+        <div class="cta-whatsapp-tag">Atención directa</div>
+        <h3 class="cta-whatsapp-title">Si no encuentras lo que buscas, pregunta a nuestros asesores de venta y con gusto te apoyaremos</h3>
+        <p class="cta-whatsapp-text">Escríbenos por WhatsApp y te respondemos al momento. Sin esperas, sin formularios.</p>
       </div>
-      <button onclick="window.open('https://wa.me/525548051103','_blank')" style="background:#25d366; color:white; border:none; padding:18px 40px; border-radius:8px; cursor:pointer;
-      font-family:'Barlow Condensed'; font-weight:700; font-size:18px; letter-spacing:1px; text-transform:uppercase;
-      display:flex; align-items:center; gap:10px; transition:0.3s; white-space:nowrap; flex-shrink:0;"
-        onmouseover="this.style.background='#1da851'" onmouseout="this.style.background='#25d366'">
-        <i class="ti ti-brand-whatsapp" style="font-size:24px;"></i> Escribir ahora
+      <button onclick="abrirWhatsappDirecto()" class="cta-whatsapp-btn">
+        <i class="ti ti-brand-whatsapp"></i> Escribir ahora
       </button>
     </div>
-
   </section>
 
   <section id="menu">
@@ -599,78 +154,42 @@
       <h2 class="section-title">CATÁLOGO DE PRODUCTOS</h2>
     </div>
 
-    <!-- BUSCADOR + CONTADOR -->
-    <div style="padding:0 3rem 1.5rem; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
-      <div style="flex:1; min-width:220px; position:relative;">
-        <i class="ti ti-search"
-          style="position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:18px;"></i>
-        <input id="buscador" type="text" placeholder="Buscar producto..." oninput="filtrarCatalogo()"
-          style="width:100%; background:var(--bg-card); border:1px solid var(--border-color); border-radius:8px;
-        padding:12px 14px 12px 42px; color:white; font-family:'Barlow',sans-serif; font-size:15px; outline:none; transition:0.3s;" onfocus="this.style.borderColor='var(--accent-orange)'"
-          onblur="this.style.borderColor='var(--border-color)'">
+    <div class="search-container">
+      <div class="search-input-wrapper">
+        <i class="ti ti-search"></i>
+        <input id="buscador" type="text" placeholder="Buscar producto..." oninput="filtrarCatalogo()">
       </div>
-      <div id="contadorResultados"
-        style="font-family:'Barlow Condensed'; font-size:13px; letter-spacing:1px; color:var(--text-muted); white-space:nowrap;">
+      <div id="contadorResultados" class="results-counter"></div>
+    </div>
+
+    <div id="filtrosBtns" class="filters-container">
+      <button onclick="setFiltro('todo', this)" class="filtro-btn filtro-activo"><i class="ti ti-layout-grid"></i> Todo</button>
+      <button onclick="setFiltro('herramientas', this)" class="filtro-btn"><i class="ti ti-tools"></i> Herramientas</button>
+      <button onclick="setFiltro('construccion', this)" class="filtro-btn"><i class="ti ti-building"></i> Construcción</button>
+      <button onclick="setFiltro('electrico', this)" class="filtro-btn"><i class="ti ti-bolt"></i> Eléctrico</button>
+      <button onclick="setFiltro('plomeria', this)" class="filtro-btn"><i class="ti ti-droplet"></i> Plomería</button>
+      <button onclick="setFiltro('seguridad', this)" class="filtro-btn"><i class="ti ti-hardhat"></i> Seguridad</button>
+    </div>
+
+    <div id="catalogoContenido" class="catalog-content"></div>
+
+    <div id="sinResultados" class="no-results">
+      <i class="ti ti-search-off"></i>
+      <p>No se encontraron productos para "<span id="terminoBusqueda"></span>"</p>
+      <button class="nav-wish reset-search-btn" onclick="limpiarBusqueda()">Ver todos los productos</button>
+    </div>
+
+    <div class="cta-whatsapp-box catalog-cta">
+      <div class="cta-whatsapp-bg-circle"></div>
+      <div class="cta-whatsapp-content">
+        <div class="cta-whatsapp-tag">Atención directa</div>
+        <h3 class="cta-whatsapp-title">¿No encuentras lo que buscas?</h3>
+        <p class="cta-whatsapp-text">Pregunta a nuestros asesores — te respondemos al momento.</p>
       </div>
-    </div>
-
-    <!-- FILTROS POR CATEGORÍA -->
-    <div style="padding:0 3rem 2rem; display:flex; gap:10px; flex-wrap:wrap;" id="filtrosBtns">
-      <button onclick="setFiltro('todo', this)" class="filtro-btn filtro-activo">
-        <i class="ti ti-layout-grid"></i> Todo
-      </button>
-      <button onclick="setFiltro('herramientas', this)" class="filtro-btn">
-        <i class="ti ti-tools"></i> Herramientas
-      </button>
-      <button onclick="setFiltro('construccion', this)" class="filtro-btn">
-        <i class="ti ti-building"></i> Construcción
-      </button>
-      <button onclick="setFiltro('electrico', this)" class="filtro-btn">
-        <i class="ti ti-bolt"></i> Eléctrico
-      </button>
-      <button onclick="setFiltro('plomeria', this)" class="filtro-btn">
-        <i class="ti ti-droplet"></i> Plomería
-      </button>
-      <button onclick="setFiltro('seguridad', this)" class="filtro-btn">
-        <i class="ti ti-hardhat"></i> Seguridad
+      <button onclick="abrirWhatsappDirecto()" class="cta-whatsapp-btn">
+        <i class="ti ti-brand-whatsapp"></i> Escribir ahora
       </button>
     </div>
-
-    <!-- GRID POR CATEGORÍAS -->
-    <div id="catalogoContenido" style="padding:0 3rem;"></div>
-
-    <!-- SIN RESULTADOS -->
-    <div id="sinResultados" style="display:none; text-align:center; padding:4rem 3rem;">
-      <i class="ti ti-search-off"
-        style="font-size:48px; color:var(--border-color); display:block; margin-bottom:1rem;"></i>
-      <p style="color:var(--text-muted); font-size:16px;">No se encontraron productos para "<span
-          id="terminoBusqueda"></span>"</p>
-      <button class="nav-wish" style="margin:1.5rem auto" onclick="limpiarBusqueda()">Ver todos los productos</button>
-    </div>
-
-    <!-- CTA WHATSAPP -->
-    <div style="margin:3rem 3rem 2rem; background:linear-gradient(135deg, #0d1117 0%, #1a1f26 100%);
-    border:1px solid var(--border-color); border-radius:16px; padding:3rem;
-    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:2rem;
-    position:relative; overflow:hidden;">
-      <div style="position:absolute; right:-40px; top:-40px; width:200px; height:200px; border-radius:50%;
-      background:rgba(37,211,102,0.05); pointer-events:none;"></div>
-      <div style="position:relative; z-index:1;">
-        <div
-          style="font-family:'Barlow Condensed'; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#25d366; margin-bottom:0.5rem;">
-          Atención directa</div>
-        <h3 style="font-family:'Bebas Neue'; font-size:36px; margin-bottom:0.5rem;">¿No encuentras lo que buscas?</h3>
-        <p style="color:var(--text-muted); font-size:15px;">Pregunta a nuestros asesores — te respondemos al momento.
-        </p>
-      </div>
-      <button onclick="window.open('https://wa.me/525548051103','_blank')" style="background:#25d366; color:white; border:none; padding:18px 40px; border-radius:8px; cursor:pointer;
-      font-family:'Barlow Condensed'; font-weight:700; font-size:18px; letter-spacing:1px; text-transform:uppercase;
-      display:flex; align-items:center; gap:10px; transition:0.3s; white-space:nowrap; flex-shrink:0;"
-        onmouseover="this.style.background='#1da851'" onmouseout="this.style.background='#25d366'">
-        <i class="ti ti-brand-whatsapp" style="font-size:24px;"></i> Escribir ahora
-      </button>
-    </div>
-
   </section>
 
   <section id="deseos">
@@ -678,7 +197,7 @@
       <div class="section-subtitle">Tu Selección</div>
       <h2 class="section-title">Lista de productos</h2>
     </div>
-    <div id="wishContent" style="padding: 0 5rem"></div>
+    <div id="wishContent" class="wish-content-container"></div>
   </section>
 
   <section id="nosotros">
@@ -687,137 +206,79 @@
       <h2 class="section-title">SOBRE NOSOTROS</h2>
     </div>
 
-    <!-- HERO -->
     <div class="about-hero">
-      <h3 style="font-family:'Bebas Neue'; font-size:40px; margin-bottom:1rem">
-        CONSTRUIMOS <span style="color:var(--accent-orange)">CONTIGO</span>
-      </h3>
-      <p style="color:var(--text-muted); line-height:1.8; font-size:16px; max-width:800px">
-        En CITIOLD RV llevamos más de 2 años siendo el aliado de obra de cientos de familias, contratistas y empresas
-        constructoras de la región. Trabajamos con las mejores marcas del mercado para garantizarte producto de calidad,
-        asesoría técnica real y el mejor precio.
-      </p>
+      <h3>CONSTRUIMOS <span>CONTIGO</span></h3>
+      <p>En CITIOLD RV llevamos más de 2 años siendo el aliado de obra de cientos de familias, contratistas y empresas constructoras de la región. Trabajamos con las mejores marcas del mercado para garantizarte producto de calidad, asesoría técnica real y el mejor precio.</p>
     </div>
 
-    <!-- TARJETAS DE VALORES -->
     <div class="about-grid">
       <div class="about-card">
         <i class="ti ti-shield-check"></i>
-        <h4 style="font-family:'Bebas Neue'; font-size:24px">Calidad Garantizada</h4>
-        <p style="color:var(--text-muted); font-size:14px">Solo trabajamos con marcas y proveedores certificados. Cada
-          producto tiene respaldo de fábrica.</p>
+        <h4>Calidad Garantizada</h4>
+        <p>Solo trabajamos con marcas y proveedores certificados. Cada producto tiene respaldo de fábrica.</p>
       </div>
       <div class="about-card">
         <i class="ti ti-headset"></i>
-        <h4 style="font-family:'Bebas Neue'; font-size:24px">Asesoría Técnica</h4>
-        <p style="color:var(--text-muted); font-size:14px">Nuestro equipo conoce cada producto. Te orientamos para
-          elegir la solución correcta en cada proyecto.</p>
+        <h4>Asesoría Técnica</h4>
+        <p>Nuestro equipo conoce cada producto. Te orientamos para elegir la solución correcta en cada proyecto.</p>
       </div>
       <div class="about-card">
         <i class="ti ti-truck-delivery"></i>
-        <h4 style="font-family:'Bebas Neue'; font-size:24px">Servicio Ágil</h4>
-        <p style="color:var(--text-muted); font-size:14px">Atención inmediata vía WhatsApp y cotizaciones rápidas porque
-          tu obra no puede esperar.</p>
+        <h4>Servicio Ágil</h4>
+        <p>Atención inmediata vía WhatsApp y cotizaciones rápidas porque tu obra no puede esperar.</p>
       </div>
     </div>
 
-    <!-- ESTADÍSTICAS -->
-    <div
-      style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border-color); margin:2rem 3rem 0;">
-      <div style="background:var(--bg-card); padding:2rem; text-align:center;">
-        <div style="font-family:'Bebas Neue'; font-size:56px; color:var(--accent-orange); line-height:1">2+</div>
-        <div
-          style="font-family:'Barlow Condensed'; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--text-muted); margin-top:6px">
-          Años de experiencia</div>
+    <div class="about-stats-grid">
+      <div class="about-stat-item">
+        <div class="about-stat-num">2+</div>
+        <div class="about-stat-lbl">Años de experiencia</div>
       </div>
-      <div style="background:var(--bg-card); padding:2rem; text-align:center;">
-        <div style="font-family:'Bebas Neue'; font-size:56px; color:var(--accent-orange); line-height:1">250+</div>
-        <div
-          style="font-family:'Barlow Condensed'; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--text-muted); margin-top:6px">
-          Productos en catálogo</div>
+      <div class="about-stat-item">
+        <div class="about-stat-num">250+</div>
+        <div class="about-stat-lbl">Productos en catálogo</div>
       </div>
-      <div style="background:var(--bg-card); padding:2rem; text-align:center;">
-        <div style="font-family:'Bebas Neue'; font-size:56px; color:var(--accent-orange); line-height:1">5</div>
-        <div
-          style="font-family:'Barlow Condensed'; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--text-muted); margin-top:6px">
-          Marcas líderes</div>
+      <div class="about-stat-item">
+        <div class="about-stat-num">5</div>
+        <div class="about-stat-lbl">Marcas líderes</div>
       </div>
-      <div style="background:var(--bg-card); padding:2rem; text-align:center;">
-        <div style="font-family:'Bebas Neue'; font-size:56px; color:var(--accent-orange); line-height:1">100%</div>
-        <div
-          style="font-family:'Barlow Condensed'; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--text-muted); margin-top:6px">
-          Compromiso contigo</div>
+      <div class="about-stat-item">
+        <div class="about-stat-num">100%</div>
+        <div class="about-stat-lbl">Compromiso contigo</div>
       </div>
     </div>
 
-    <!-- MARCAS -->
-    <div
-      style="margin:2rem 3rem 0; background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:2.5rem;">
-      <div
-        style="font-family:'Barlow Condensed'; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--accent-orange); margin-bottom:1.5rem; text-align:center;">
-        Marcas con las que trabajamos
-      </div>
-      <div style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:12px;">
-        <div
-          style="background:#0a0c10; border:1px solid var(--border-color); border-radius:8px; padding:14px 28px; font-family:'Bebas Neue'; font-size:22px; letter-spacing:2px; color:white; transition:0.3s;"
-          onmouseover="this.style.borderColor='var(--accent-orange)';this.style.color='var(--accent-orange)'"
-          onmouseout="this.style.borderColor='var(--border-color)';this.style.color='white'">TRUPER</div>
-        <div
-          style="background:#0a0c10; border:1px solid var(--border-color); border-radius:8px; padding:14px 28px; font-family:'Bebas Neue'; font-size:22px; letter-spacing:2px; color:white; transition:0.3s;"
-          onmouseover="this.style.borderColor='var(--accent-orange)';this.style.color='var(--accent-orange)'"
-          onmouseout="this.style.borderColor='var(--border-color)';this.style.color='white'">PRETUL</div>
-        <div
-          style="background:#0a0c10; border:1px solid var(--border-color); border-radius:8px; padding:14px 28px; font-family:'Bebas Neue'; font-size:22px; letter-spacing:2px; color:white; transition:0.3s;"
-          onmouseover="this.style.borderColor='var(--accent-orange)';this.style.color='var(--accent-orange)'"
-          onmouseout="this.style.borderColor='var(--border-color)';this.style.color='white'">URREA</div>
-        <div
-          style="background:#0a0c10; border:1px solid var(--border-color); border-radius:8px; padding:14px 28px; font-family:'Bebas Neue'; font-size:22px; letter-spacing:2px; color:white; transition:0.3s;"
-          onmouseover="this.style.borderColor='var(--accent-orange)';this.style.color='var(--accent-orange)'"
-          onmouseout="this.style.borderColor='var(--border-color)';this.style.color='white'">SANTUL</div>
-        <div
-          style="background:#0a0c10; border:1px solid var(--border-color); border-radius:8px; padding:14px 28px; font-family:'Bebas Neue'; font-size:22px; letter-spacing:2px; color:white; transition:0.3s;"
-          onmouseover="this.style.borderColor='var(--accent-orange)';this.style.color='var(--accent-orange)'"
-          onmouseout="this.style.borderColor='var(--border-color)';this.style.color='white'">AKSI</div>
+    <div class="brands-wrapper">
+      <div class="brands-title">Marcas con las que trabajamos</div>
+      <div class="brands-flex">
+        <div class="brand-badge">TRUPER</div>
+        <div class="brand-badge">PRETUL</div>
+        <div class="brand-badge">URREA</div>
+        <div class="brand-badge">SANTUL</div>
+        <div class="brand-badge">AKSI</div>
       </div>
     </div>
 
-    <!-- MISIÓN -->
-    <div
-      style="margin:2rem 3rem 0; padding:2.5rem; border-left:4px solid var(--accent-orange); background:var(--bg-card); border-radius:0 12px 12px 0;">
-      <div
-        style="font-family:'Barlow Condensed'; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent-orange); margin-bottom:0.8rem">
-        Nuestra misión</div>
-      <p style="font-family:'Bebas Neue'; font-size:28px; line-height:1.3; color:white">
-        Proveer materiales eléctricos, ferreteros y mecánicos de calidad, ofreciendo soluciones confiables que
-        satisfagan las necesidades de nuestros clientes y contribuyan al desarrollo de sus proyectos.
+    <div class="corporate-info-box">
+      <div class="corporate-title">Nuestra misión</div>
+      <p class="corporate-text">Proveer materiales eléctricos, ferreteros y mecánicos de calidad, ofreciendo soluciones confiables que satisfagan las necesidades de nuestros clientes y contribuyan al desarrollo de sus proyectos.</p>
+    </div>
+
+    <div class="corporate-info-box">
+      <div class="corporate-title">Nuestra visión</div>
+      <p class="corporate-text">Ser una empresa reconocida en la región por la excelencia en la distribución de materiales, la calidad de nuestros productos y el trato cercano y confiable hacia nuestros clientes.</p>
+    </div>
+
+    <div class="corporate-info-box">
+      <div class="corporate-title">Nuestros valores</div>
+      <p class="corporate-text font-bullets">
+        • Compromiso con la calidad<br>
+        • Atención al cliente<br>
+        • Innovación constante<br>
+        • Responsabilidad social<br>
+        • Integridad y ética comercial
       </p>
     </div>
-
-    <!-- VISIÓN -->
-    <div
-      style="margin:2rem 3rem 0; padding:2.5rem; border-left:4px solid var(--accent-orange); background:var(--bg-card); border-radius:0 12px 12px 0;">
-      <div
-        style="font-family:'Barlow Condensed'; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent-orange); margin-bottom:0.8rem">
-        Nuestra visión</div>
-      <p style="font-family:'Bebas Neue'; font-size:28px; line-height:1.3; color:white">
-        Ser una empresa reconocida en la región por la excelencia en la distribución de materiales, la calidad de
-        nuestros productos y el trato cercano y confiable hacia nuestros clientes. </p>
-    </div>
-
-    <!-- VALORES -->
-    <div
-      style="margin:2rem 3rem 0; padding:2.5rem; border-left:4px solid var(--accent-orange); background:var(--bg-card); border-radius:0 12px 12px 0;">
-      <div
-        style="font-family:'Barlow Condensed'; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent-orange); margin-bottom:0.8rem">
-        Nuestros valores</div>
-      <p style="font-family:'Bebas Neue'; font-size:28px; line-height:1.3; color:white">
-         Compromiso con la calidad
-         Atención al cliente
-         Innovación constante
-         Responsabilidad social
-         Integridad y etica comercial</p>
-    </div>
-
   </section>
 
   <section id="contacto">
@@ -831,7 +292,7 @@
         <div class="contact-info-card">
           <div class="info-item">
             <div class="info-label">Dirección</div>
-            <p style="font-weight:500">Calle Sergio Buitrón Casas, Col. Cuauhtémoc, Tlahuelilpan, Hidalgo</p>
+            <p class="text-medium">Calle Sergio Buitrón Casas, Col. Cuauhtémoc, Tlahuelilpan, Hidalgo</p>
           </div>
           <div class="info-item">
             <div class="info-label">Atención Directa</div>
@@ -846,318 +307,26 @@
           </div>
         </div>
 
-        <div style="background:#000; padding:2.5rem; border-radius:12px; border:1px solid var(--border-color)">
-          <div class="info-label" style="margin-bottom:1rem">¿Tienes alguna duda?</div>
-
-          <input id="contact-nombre" type="text" placeholder="nombre"
-            style="width:100%; background:#111; border:1px solid #333; padding:12px; color:white; margin-bottom:10px; border-radius:4px">
-
-          <input id="contact-correo" type="text" placeholder="correo"
-            style="width:100%; background:#111; border:1px solid #333; padding:12px; color:white; margin-bottom:10px; border-radius:4px">
-
-          <input id="contact-telefono" type="text" placeholder="telefono"
-            style="width:100%; background:#111; border:1px solid #333; padding:12px; color:white; margin-bottom:10px; border-radius:4px">
-
-          <textarea id="contact-mensaje" placeholder="mensaje"
-            style="width:100%; background:#111; border:1px solid #333; padding:12px; color:white; height:80px; margin-bottom:10px; border-radius:4px; resize:vertical"></textarea>
-
-          <button id="btn-enviar" class="nav-wish" style="width:100%; justify-content:center" onclick="enviarMensaje()">
-            Enviar Consulta
-          </button>
-          <p id="contact-status" style="margin-top:8px; font-size:13px; text-align:center; min-height:18px"></p>
+        <div class="contact-form-card">
+          <div class="info-label label-margin">¿Tienes alguna duda?</div>
+          <input id="contact-nombre" type="text" placeholder="nombre">
+          <input id="contact-correo" type="text" placeholder="correo">
+          <input id="contact-telefono" type="text" placeholder="telefono">
+          <textarea id="contact-mensaje" placeholder="mensaje"></textarea>
+          <button id="btn-enviar" class="nav-wish btn-submit-form" onclick="enviarMensaje()">Enviar Consulta</button>
+          <p id="contact-status"></p>
         </div>
       </div>
 
       <div class="map-wrapper">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d468.22255699308073!2d-99.23562559124021!3d20.143204823369405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d261b417b98e81%3A0xd0642451edc60ce0!2sFERRELECTRICA%20CITIOLD%20RV!5e0!3m2!1ses-419!2smx!4v1778611505188!5m2!1ses-419!2smx"
-          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d468.22255699308073!2d-99.23562559124021!3d20.143204823369405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d261b417b98e81%3A0xd0642451edc60ce0!2sFERRELECTRICA%20CITIOLD%20RV!5e0!3m2!1ses-419!2smx!4v1778611505188!5m2!1ses-419!2smx" width="600" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
 
   <div class="toast" id="toast"></div>
 
-  <script>
-    const WA_NUMBER = '525548051103';
-    const PRODUCTOS = [
-      { id: 1, nombre: 'Taladro percutor 750W', cat: 'herramientas', desc: 'Potente taladro para concreto.', precio: 2450, icon: 'ti-drill' },
-      { id: 2, nombre: 'Nivel láser automático', cat: 'herramientas', desc: 'Proyección 30 metros.', precio: 3800, icon: 'ti-ruler' },
-      { id: 4, nombre: 'Cemento Gris 50kg', cat: 'construccion', desc: 'Uso general CPC 30R.', precio: 185, icon: 'ti-building' },
-      { id: 5, nombre: 'Varilla 3/8" corrugada', cat: 'construccion', desc: 'Grado 40, 12 metros.', precio: 145, icon: 'ti-line' },
-      { id: 7, nombre: 'Cable THHN calibre 12', cat: 'electrico', desc: 'Rollo 100m cobre puro.', precio: 680, icon: 'ti-bolt' }
-    ];
-
-    let wishlist = [];
-
-    function showSection(id) {
-      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      const activeLink = Array.from(document.querySelectorAll('.nav-links a')).find(a => a.innerText.toLowerCase().includes(id === 'deseos' ? 'cotización' : id));
-      if (activeLink) activeLink.classList.add('active');
-      if (id === 'deseos') renderWish();
-      window.scrollTo(0, 0);
-    }
-
-    // ── CONFIGURACIÓN DE CATEGORÍAS ──────────────────────────
-    const CATEGORIAS = {
-      herramientas: { label: 'Herramientas', icon: 'ti-tools' },
-      construccion: { label: 'Construcción', icon: 'ti-building' },
-      electrico: { label: 'Eléctrico', icon: 'ti-bolt' },
-      plomeria: { label: 'Plomería', icon: 'ti-droplet' },
-      seguridad: { label: 'Seguridad', icon: 'ti-hardhat' },
-    };
-
-    let filtroActivo = 'todo';
-
-    function setFiltro(cat, btn) {
-      filtroActivo = cat;
-      document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('filtro-activo'));
-      btn.classList.add('filtro-activo');
-      document.getElementById('buscador').value = '';
-      filtrarCatalogo();
-    }
-
-    function limpiarBusqueda() {
-      document.getElementById('buscador').value = '';
-      filtroActivo = 'todo';
-      document.querySelectorAll('.filtro-btn').forEach((b, i) => {
-        b.classList.toggle('filtro-activo', i === 0);
-      });
-      filtrarCatalogo();
-    }
-
-    function filtrarCatalogo() {
-      const busqueda = document.getElementById('buscador').value.toLowerCase().trim();
-      const grid = document.getElementById('catalogoContenido');
-      const sinRes = document.getElementById('sinResultados');
-      const contador = document.getElementById('contadorResultados');
-
-      let productosFiltrados = PRODUCTOS.filter(p => {
-        const coincideCat = filtroActivo === 'todo' || p.cat === filtroActivo;
-        const coincideBusq = !busqueda ||
-          p.nombre.toLowerCase().includes(busqueda) ||
-          p.desc.toLowerCase().includes(busqueda) ||
-          p.cat.toLowerCase().includes(busqueda);
-        return coincideCat && coincideBusq;
-      });
-
-      if (!productosFiltrados.length) {
-        grid.innerHTML = '';
-        sinRes.style.display = 'block';
-        document.getElementById('terminoBusqueda').textContent = busqueda || filtroActivo;
-        contador.textContent = '';
-        return;
-      }
-
-      sinRes.style.display = 'none';
-      contador.textContent = `${productosFiltrados.length} producto${productosFiltrados.length !== 1 ? 's' : ''}`;
-
-      // Agrupar por categoría
-      const agrupados = {};
-      productosFiltrados.forEach(p => {
-        if (!agrupados[p.cat]) agrupados[p.cat] = [];
-        agrupados[p.cat].push(p);
-      });
-
-      // Si hay filtro activo o búsqueda, no mostrar subtítulos de categoría
-      const mostrarCats = filtroActivo === 'todo' && !busqueda;
-
-      grid.innerHTML = Object.entries(agrupados).map(([cat, prods]) => {
-        const info = CATEGORIAS[cat] || { label: cat, icon: 'ti-package' };
-        return `
-      <div class="cat-bloque">
-        ${mostrarCats ? `
-        <div class="cat-titulo">
-          <i class="ti ${info.icon}"></i> ${info.label}
-        </div>` : ''}
-        <div class="products-grid" style="padding:0; margin-bottom:0;">
-          ${prods.map(p => tarjetaProducto(p)).join('')}
-        </div>
-      </div>
-    `;
-      }).join('');
-    }
-
-    function tarjetaProducto(p) {
-      const inWish = wishlist.find(w => w.id === p.id);
-      return `
-    <div class="product-card">
-      <div style="font-size:32px; color:var(--accent-orange); margin-bottom:10px"><i class="ti ${p.icon}"></i></div>
-      <h3 style="font-family:'Barlow Condensed'; font-size:20px; font-weight:700">${p.nombre}</h3>
-      <p style="color:var(--text-muted); font-size:13px; margin-bottom:15px">${p.desc}</p>
-      <div style="font-family:'Bebas Neue'; font-size:28px">$${p.precio.toLocaleString()}<span class="iva-tag">+ IVA</span></div>
-      <button class="nav-wish" style="width:100%; margin-top:15px; background:${inWish ? '#1e293b' : ''}" onclick="toggleWish(${p.id})">
-        ${inWish ? '<i class="ti ti-check"></i> Añadido' : '<i class="ti ti-shopping-cart"></i> Añadir a Cotización'}
-      </button>
-    </div>
-  `;
-    }
-
-    function renderProducts() {
-      filtrarCatalogo();
-    }
-
-    function toggleWish(id) {
-      const prod = PRODUCTOS.find(p => p.id === id);
-      const index = wishlist.findIndex(w => w.id === id);
-      if (index > -1) { wishlist.splice(index, 1); showToast('Eliminado de la lista'); }
-      else { wishlist.push({ ...prod, qty: 1 }); showToast('¡Añadido!'); }
-      updateBadge(); renderProducts();
-    }
-
-    function updateQty(id, delta) {
-      const item = wishlist.find(w => w.id === id);
-      if (item) { item.qty = Math.max(1, item.qty + delta); renderWish(); updateBadge(); }
-    }
-
-    function updateBadge() {
-      document.getElementById('badge').textContent = wishlist.reduce((acc, curr) => acc + curr.qty, 0);
-    }
-
-    function renderWish() {
-      const cont = document.getElementById('wishContent');
-      if (wishlist.length === 0) {
-        cont.innerHTML = `<div style="text-align:center; padding:5rem; background:var(--bg-card); border-radius:12px; border:1px solid var(--border-color)">
-          <p style="color:var(--text-muted)">Tu lista de cotización está vacía.</p>
-          <button class="nav-wish" style="margin: 1rem auto" onclick="showSection('menu')">Ir al Catálogo</button>
-        </div>`;
-        return;
-      }
-
-      let subtotal = 0;
-      const itemsHtml = wishlist.map(p => {
-        const lineTotal = p.precio * p.qty;
-        subtotal += lineTotal;
-        return `
-          <div class="wish-item">
-            <div style="font-size:24px; color:var(--accent-orange)"><i class="ti ${p.icon}"></i></div>
-            <div><div style="font-weight:700">${p.nombre}</div><div style="font-size:12px; color:var(--text-muted)">$${p.precio} + IVA</div></div>
-            <div class="qty-control">
-              <button class="qty-btn" onclick="updateQty(${p.id}, -1)">-</button>
-              <div style="font-family:'Bebas Neue'; font-size:18px; width:30px; text-align:center">${p.qty}</div>
-              <button class="qty-btn" onclick="updateQty(${p.id}, 1)">+</button>
-            </div>
-            <div style="font-family:'Bebas Neue'; font-size:24px">$${lineTotal.toLocaleString()}</div>
-            <button style="background:none; border:none; color:#ff4444; cursor:pointer" onclick="toggleWish(${p.id})"><i class="ti ti-trash"></i></button>
-          </div>
-        `;
-      }).join('');
-
-      const iva = subtotal * 0.16;
-      const total = subtotal + iva;
-
-      cont.innerHTML = `
-        ${itemsHtml}
-        <div style="margin-top:2rem; background:var(--bg-card); padding:2rem; border-radius:12px; border:1px solid var(--border-color)">
-          <div style="display:flex; justify-content:space-between; margin-bottom:10px"><span>Subtotal:</span><span>$${subtotal.toLocaleString()}</span></div>
-          <div style="display:flex; justify-content:space-between; margin-bottom:10px; color:var(--accent-orange)"><span>IVA (16%):</span><span>$${iva.toLocaleString()}</span></div>
-          <div style="display:flex; justify-content:space-between; font-size:32px; font-family:'Bebas Neue'; border-top:1px solid #333; padding-top:15px"><span>TOTAL:</span><span>$${total.toLocaleString()}</span></div>
-          <button class="btn-whatsapp" onclick="sendWhatsApp(${subtotal}, ${iva}, ${total})"><i class="ti ti-brand-whatsapp"></i> Solicitar por WhatsApp</button>
-        </div>`;
-    }
-
-    function sendWhatsApp(sub, iva, tot) {
-      let msg = `*COTIZACIÓN - CITIOLD RV*\n\n`;
-      wishlist.forEach(p => msg += `• ${p.qty}x ${p.nombre} ($${(p.precio * p.qty).toLocaleString()})\n`);
-      msg += `\n*Subtotal:* $${sub.toLocaleString()}\n*IVA (16%):* $${iva.toLocaleString()}\n*TOTAL:* $${tot.toLocaleString()}`;
-      window.open(`https://wa.me/${525548051103}?text=${encodeURIComponent(msg)}`);
-    }
-
-    function showToast(msg) {
-      const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 2500);
-    }
-
-    function renderDestacados() {
-      const destacados = PRODUCTOS.slice(0, 4);
-      const grid = document.getElementById('destacadosGrid');
-      if (!grid) return;
-      grid.innerHTML = destacados.map(p => {
-        const inWish = wishlist.find(w => w.id === p.id);
-        return `
-      <div class="product-card">
-        <div style="font-size:32px; color:var(--accent-orange); margin-bottom:10px"><i class="ti ${p.icon}"></i></div>
-        <h3 style="font-family:'Barlow Condensed'; font-size:20px; font-weight:700">${p.nombre}</h3>
-        <p style="color:var(--text-muted); font-size:13px; margin-bottom:15px">${p.desc}</p>
-        <div style="font-family:'Bebas Neue'; font-size:28px">$${p.precio.toLocaleString()}<span class="iva-tag">+ IVA</span></div>
-        <button class="nav-wish" style="width:100%; margin-top:15px; background:${inWish ? '#1e293b' : ''}" onclick="toggleWish(${p.id})">
-          ${inWish ? 'Añadido' : 'Añadir a Cotización'}
-        </button>
-      </div>`;
-      }).join('');
-    }
-
-    renderProducts();
-    renderDestacados();
-    filtrarCatalogo();
-
-    function irACategoria(cat) {
-      showSection('menu');
-      const btn = Array.from(document.querySelectorAll('.filtro-btn'))
-        .find(b => b.getAttribute('onclick').includes(`'${cat}'`));
-      if (btn) setFiltro(cat, btn);
-    }
-
-  </script>
-
-  <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>
-    // ─── REEMPLAZA ESTOS 3 VALORES CON LOS TUYOS DE EMAILJS ───
-    const EMAILJS_PUBLIC_KEY = '4zPup5_OhaKMJLCFw';
-    const EMAILJS_SERVICE_ID = 'service_qi46mff';
-    const EMAILJS_TEMPLATE_ID = 'template_0zofegf';
-    // ──────────────────────────────────────────────────────────
-
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-
-    function enviarMensaje() {
-      const nombre = document.getElementById('contact-nombre').value.trim();
-      const correo = document.getElementById('contact-correo').value.trim();
-      const telefono = document.getElementById('contact-telefono').value.trim();
-      const mensaje = document.getElementById('contact-mensaje').value.trim();
-      const status = document.getElementById('contact-status');
-      const btn = document.getElementById('btn-enviar');
-
-      if (!nombre || !correo || !telefono || !mensaje) {
-        status.style.color = '#ff6b00';
-        status.textContent = 'Por favor completa todos los campos.';
-        return;
-      }
-
-      btn.disabled = true;
-      btn.textContent = 'Enviando...';
-      status.textContent = '';
-
-      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        nombre: nombre,
-        correo: correo,
-        telefono: telefono,
-        mensaje: mensaje
-      })
-        .then(() => {
-          status.style.color = '#4caf50';
-          status.textContent = '✓ Mensaje enviado. ¡Nos pondremos en contacto pronto!';
-          document.getElementById('contact-nombre').value = '';
-          document.getElementById('contact-correo').value = '';
-          document.getElementById('contact-telefono').value = '';
-          document.getElementById('contact-mensaje').value = '';
-          btn.textContent = 'Enviar Consulta';
-          btn.disabled = false;
-        })
-        .catch(() => {
-          status.style.color = '#ff4444';
-          status.textContent = '✗ Ocurrió un error. Intenta de nuevo o escríbenos directamente.';
-          btn.textContent = 'Enviar Consulta';
-          btn.disabled = false;
-        });
-    }
-
-  </script>
-
+  <script src="script.js"></script>
 </body>
-
 </html>
